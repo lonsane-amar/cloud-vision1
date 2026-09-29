@@ -329,7 +329,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col bg-slate-100 text-slate-900 overflow-hidden select-none">
+    <div className="w-screen h-screen h-[100dvh] flex flex-col bg-slate-100 text-slate-900 overflow-hidden select-none">
       {/* Top Navigation Bar */}
       <TopNav
         locations={cityLocations}
@@ -434,7 +434,7 @@ export default function App() {
             {!isSidePanelOpen && selectedLocation && (
               <button
                 onClick={() => setIsSidePanelOpen(true)}
-                className="absolute top-4 right-44 z-[400] px-3 py-1.5 rounded-lg bg-white/95 border border-slate-300 text-xs font-semibold text-slate-800 shadow-md hover:bg-slate-50 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="absolute top-28 left-3 right-auto md:top-4 md:left-auto md:right-44 z-[400] px-3 py-1.5 rounded-lg bg-white/95 border border-slate-300 text-xs font-semibold text-slate-800 shadow-md hover:bg-slate-50 transition-all flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Show {selectedLocation.name} Telemetry</span>
               </button>
