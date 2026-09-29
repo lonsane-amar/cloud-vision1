@@ -276,7 +276,10 @@ export const MultiCityMap: React.FC<MultiCityMapProps> = ({
 
     // Light GIS Daylight Base Tiles (Carto Voyager for clear, eye-friendly government GIS navigation)
     L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+,
       {
         attribution: '&copy; CARTO &copy; OpenStreetMap contributors | Ground Radar & Highway Detour Engine',
         subdomains: 'abcd',
