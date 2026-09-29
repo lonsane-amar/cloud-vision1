@@ -315,7 +315,14 @@ export const MultiCityMap: React.FC<MultiCityMapProps> = ({
 
     mapInstanceRef.current = map;
 
+    // Flex layouts and mobile browser chrome can resize the map without a
+    // window resize event. Keep Leaflet's viewport in sync with its container.
+    const resizeObserver = new ResizeObserver(() => map.invalidateSize({ pan: false }));
+    resizeObserver.observe(mapContainerRef.current);
+    requestAnimationFrame(() => map.invalidateSize({ pan: false }));
+
     return () => {
+      resizeObserver.disconnect();
       map.remove();
       mapInstanceRef.current = null;
     };
@@ -795,7 +802,7 @@ export const MultiCityMap: React.FC<MultiCityMapProps> = ({
 
       {/* Active Detour On-Map Floating HUD Bar */}
       {activeDetour && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-[400] max-w-xl w-[calc(100vw-32px)] bg-white/95 border border-emerald-400 rounded-2xl shadow-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-in fade-in slide-in-from-top-3 duration-200">
+        <div id="active-detour-hud" className="absolute top-4 left-1/2 -translate-x-1/2 z-[400] max-w-xl w-[calc(100vw-32px)] bg-white/95 border border-emerald-400 rounded-2xl shadow-xl p-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 animate-in fade-in slide-in-from-top-3 duration-200">
           <div className="space-y-0.5">
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase bg-red-50 text-red-700 border border-red-200 flex items-center gap-1">

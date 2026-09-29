@@ -90,7 +90,7 @@ export const LayerControls: React.FC<LayerControlsProps> = ({ layers, onToggleLa
   ];
 
   return (
-    <div className="absolute top-4 right-4 z-[400] flex flex-col items-end">
+    <div id="map-layer-controls" className="absolute top-4 right-4 z-[400] flex flex-col items-end">
       {/* Trigger Button */}
       <button
         id="btn-layer-controls-toggle"
