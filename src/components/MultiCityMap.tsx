@@ -275,17 +275,15 @@ export const MultiCityMap: React.FC<MultiCityMapProps> = ({
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     // Light GIS Daylight Base Tiles (Carto Voyager for clear, eye-friendly government GIS navigation)
-    L.tileLayer(
-    L.tileLayer(
+  L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
-,
-      {
-        attribution: '&copy; CARTO &copy; OpenStreetMap contributors | Ground Radar & Highway Detour Engine',
-        subdomains: 'abcd',
-        maxZoom: 19,
-      }
-    ).addTo(map);
+    attribution: '&copy; OpenStreetMap contributors | Ground Radar & Highway Detour Engine',
+    subdomains: 'abc',
+    maxZoom: 19,
+  }
+).addTo(map);
+
 
     // Click handler on map to allow reporting incident anywhere
     map.on('click', (e: L.LeafletMouseEvent) => {
